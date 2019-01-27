@@ -1,20 +1,57 @@
-import React, { Component } from "react";
-import { Button, Alert } from "reactstrap";
-import Layout from "../components/Layout";
-export default class index extends Component {
+import RestaurantList from "../components/RestaurantList";
+import React from "react";
+
+import {
+  Alert,
+  Button,
+  Col,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  Row
+} from "reactstrap";
+
+class Index extends React.Component {
+  constructor(props) {
+    super(props);
+    //query state will be passed to RestaurantList for the filter query
+    this.state = {
+      query: ""
+    };
+  }
+  onChange(e) {
+    //set the state = to the input typed in the search Input Component
+    //this.state.query gets passed into RestaurantList to filter the results
+    this.setState({ query: e.target.value.toLowerCase() });
+  }
   render() {
     return (
-      <React.Fragment>
-        <Layout>
-          <h2 style={{ textAlign: "center" }}>
-            Welcome to Nextjs application worls!
-          </h2>
-          <Alert color="primary">
-            Hello Project is strapi-next with Bootstrap
-          </Alert>
-          &nbsp; <Button color="primary">Hello from nextjs</Button>
-        </Layout>
-      </React.Fragment>
+      <div className="container-fluid">
+        <Row>
+          <Col className="offset-3">
+            <InputGroup className="w-50">
+              <Input onChange={this.onChange.bind(this)} />
+              <InputGroupAddon addonType="append"> Search </InputGroupAddon>
+            </InputGroup>
+          </Col>
+        </Row>
+        <br />
+        <Row>
+          <Col>
+            <RestaurantList search={this.state.query} />
+          </Col>
+        </Row>
+        <style jsx>
+          {`
+            .search {
+              margin: 20px;
+              width: 500px;
+            }
+          `}
+        </style>
+      </div>
     );
   }
 }
+
+export default Index;

@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Layout from "../components/Layout";
 const signup = props => {
   return (
-    <Layout>
+    <React.Fragment>
       <h3>Signup page!</h3>
-    </Layout>
+    </React.Fragment>
   );
 };
 
