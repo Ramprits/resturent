@@ -18,9 +18,9 @@ class Layout extends React.Component {
   }
   render() {
     const { children } = this.props;
-    const title = "Welcome to Nextjs";
+    const title = "Taj hotel";
     return (
-      <div>
+      <React.Fragment>
         <Head>
           <title>{title}</title>
           <meta charSet="utf-8" />
@@ -59,8 +59,8 @@ class Layout extends React.Component {
             </div>
           </Nav>
         </header>
-        <Container>{children}</Container>
-      </div>
+        <Container className="mt-4">{children}</Container>
+      </React.Fragment>
     );
   }
 }
